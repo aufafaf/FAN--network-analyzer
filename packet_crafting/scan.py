@@ -11,8 +11,14 @@ def scan_port(host, port, timeout=1):
     return result == 0
 
 
-host = "aufan.vercel"
+host = "scanme.nmap.org"
+# for port in [22, 80, 443, 8080, 23, 610]:
+#     status = "OPEN" if scan_port(host, port) else "CLOSED"
+#     print(f" target : {host}")
+#     print(f"port {port} : {status}")
+
 for port in [22, 80, 443, 8080]:
-    status = "OPEN" if scan_port(host, port) else "CLOSED"
-    print(f" target : {host}")
-    print(f"port {port} : {status}")
+    if scan_port(host, port):
+        print(f"Port : {port} OPEN")
+    else:
+        print(f"Port : {port} CLOSED")
